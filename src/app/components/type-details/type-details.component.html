@@ -1,0 +1,52 @@
+<div *ngIf="viewMode; else editable">
+  <div *ngIf="currentType.id">
+    <h4>Type</h4>
+    <div>
+      <label><strong>Nom:</strong></label> {{ currentType.nom }}
+    </div>
+
+    <a class="badge badge-warning" routerLink="/type/{{ currentType.id }}">
+      Edit
+    </a>
+  </div>
+
+  <div *ngIf="!currentType">
+    <br />
+    <p>Please click on a Type...</p>
+  </div>
+</div>
+
+<ng-template #editable>
+  <div *ngIf="currentType.id" class="edit-form">
+    <h4>Type</h4>
+    <form>
+      <div class="form-group">
+        <label for="nom">Nom</label>
+        <input
+          type="text"
+          class="form-control"
+          id="nom"
+          [(ngModel)]="currentType.nom"
+          name="nom"
+        />
+      </div>
+
+    </form>
+
+    <button class="badge badge-danger mr-2" (click)="deleteType()">
+      Delete
+    </button>
+
+
+    <button
+      type="submit"
+      class="badge badge-success mb-2" (click)="updateType()" >Update</button>
+    
+  </div>
+
+  <div *ngIf="!currentType.id">
+    <br />
+    <p>Cannot access this Type...</p>
+  </div>
+</ng-template>
+

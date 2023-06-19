@@ -1,0 +1,54 @@
+<div class="list row">
+  <div class="col-md-8">
+    <div class="input-group mb-3">
+      <input type="text" class="form-control" placeholder="Search by title" [(ngModel)]="title" />
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary" type="button" (click)="searchTitle()">
+          Search
+        </button>
+
+      </div>
+
+    </div>
+  </div>
+  <div>
+    <a href="add" class="btn btn-success">Add</a>
+  </div>
+
+  <div class="col-md-6">
+    <h4>Tutorials and Type </h4>
+    <ul class="list-group">
+        <div class="container">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Type</th>
+                <th>Tutorials</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+
+            <tr *ngFor="let item of tutorials let i=index"   >
+              <td>{{ item?.types?.nom }}</td>
+               <td> <a [routerLink]="[item.id]">{{item?.title}}</a></td>
+              
+              <td>{{item?.description}}</td>
+
+
+
+            </tr>
+          </table>
+        </div>
+      
+
+  
+    </ul>
+
+    <button class="m-3 btn btn-sm btn-danger" (click)="removeAllTutorials()">
+      Remove All
+    </button>
+  </div>
+  <div class="col-md-6">
+    <app-tutorial-details [viewMode]="true" [currentTutorial]="currentTutorial"></app-tutorial-details>
+  </div>
+</div>

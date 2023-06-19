@@ -1,0 +1,29 @@
+<div>
+    <div class="submit-form">
+      <div *ngIf="!submitted">
+        <div class="form-group">
+          <label for="Title">Title</label>
+          <input
+            type="text"
+            class="form-control"
+            id="nom"
+            required
+            [(ngModel)]="Type.nom"
+            name="nom"
+          />
+        </div>
+  
+        <button (click)="saveType()" class="btn btn-success">Submit</button>
+      </div>
+  
+      <div *ngIf="submitted" >
+        <h4>Type was submitted successfully!</h4>
+        <a href="add" class="btn btn-success" >Add Tutorial</a> 
+        <div *ngIf="submitted" class="mt-2" >
+          
+          <a href="types" class="btn btn-success" >Modify Type</a>   
+      </div>           
+      </div>
+      
+    </div>
+  </div>
